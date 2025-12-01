@@ -60,7 +60,7 @@ public class MemorySimulator {
 
     public static void main(String[] args) throws Exception {
         loadConfig("config.txt");
-        MAX_PROC_TIME = MAX_PROC_TIME / 1000; // Convert ms → seconds
+        MAX_PROC_TIME = MAX_PROC_TIME / 1000; // Convert ms to seconds
 
         System.out.println("===== CONFIGURATION =====");
         System.out.println("MEMORY_MAX = " + MEMORY_MAX + " KB");
@@ -155,6 +155,8 @@ public class MemorySimulator {
             if (success) {
                 waitingQueue.remove(p);
                 runningProcesses.add(p);
+            } else {
+            	System.out.println("Failed to allocate memory for " + p.id);
             }
         }
     }
